@@ -1,6 +1,6 @@
 import flet as ft
 from UI.view import View
-from model.model import DepositoStrumenti
+from model.modello import DepositoStrumenti
 
 '''
     CONTROLLER:

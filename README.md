@@ -143,8 +143,8 @@ Lab06/
 - Il package **_database_** contiene il file `DB_connect.py` che effettua la connessione con il database (nel file `connector.cnf` sono contenute le info
   necessarie per effettuare la connessione al database).
 - Il package **_model_** contiene i file che implementano il modello, ovvero la struttura dati rappresentata dalla classe
-`DepositoStrumenti` (`model.py`), insieme alle classi `Strumento` (`strumento.py`) e `Prestito` (`prestito.py`),
-che ne costituiscono e supportano il funzionamento.
+`DepositoStrumenti` (`modello.py`), insieme alle classi `Strumento` (`strumento.py`) e `Prestito` (`prestito.py`),
+  che ne costituiscono e supportano il funzionamento.
 - Il package **_UI_** contiene: il file `view.py` che definisce la classe `View`, che implementa l'interfaccia grafica
 utilizzando `flet` e il file `controller.py` contenente la classe `Controller` che funge da intermediario tra la View
 e il Modello. Inoltre, qui è presente il file `alert.py` in cui è definita la classe `AlertManager` usata per mostrare

@@ -1,6 +1,6 @@
 import flet as ft
 
-from model.model import DepositoStrumenti
+from model.modello import DepositoStrumenti
 from UI.view import View
 from UI.controller import Controller
 
