@@ -8,6 +8,7 @@ from model.modello import DepositoStrumenti
     - Gestisce la logica del flusso dell'applicazione
 '''
 
+
 class Controller:
     def __init__(self, view: View, model: DepositoStrumenti):
         self._model = model
@@ -28,8 +29,8 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
-    # TODO
 
+    # Funzioni per estrarre dati dal DB
     def mostra(self):
         risultato = self._model.get_strumenti()
         for strumento in risultato:
@@ -38,4 +39,12 @@ class Controller:
             self._view.lista_strumenti.controls.append(ft.Text(stringa))
             self._view.update()
 
+    def cerca_tipo(self):
+        #print(str(self._view.input_tipo_strumento.value)) prova valore
+        result = self._model.cerca_strumenti_per_tipo(self._view.input_tipo_strumento.value)
+        for strumento in result:
+            stato = "✅" if strumento.disponibile else "⛔"
+            stringa = f"{strumento}: {stato}"
+            self._view.lista_strumenti_ricerca.controls.append(ft.Text(stringa))
+            self._view.update()
 

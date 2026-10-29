@@ -75,7 +75,7 @@ class DepositoStrumenti:
         query = "SELECT * FROM strumento WHERE tipo LIKE %s"
 
         try:
-            cursor.execute(query, f"{tipo}")
+            cursor.execute(query, (tipo, )) # Deve essere tupla, lista o dict
             for row in cursor:
                 strumento = Strumento( row["codice"], row["tipo"], row["marca"],
                                        row["anno_acquisto"], row["valore"], row["disponibile"] )

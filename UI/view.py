@@ -63,10 +63,12 @@ class View:
         pulsante_conferma_responsabile = ft.Button("Conferma", on_click=self.controller.conferma_responsabile)
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
-        # TODO
+        # Mostrare tutti gli strumenti del DB
         testo_strumenti = ft.Text("Strumenti", size=20,)
         pulsante_mostra = ft.Button("Mostra", on_click=self.controller.mostra)
 
+        # Mostrare dal DB gli strmenti dato il tipo
+        pulsante_tipo = ft.Button("Cerca", on_click=self.controller.cerca_tipo)
         # --- LAYOUT ---
         self.page.add(
             self.toggle_cambia_tema,
@@ -93,11 +95,13 @@ class View:
 
 
             # Sezione 4
-            # TODO
+            # Implementata
             ft.Text("Cerca strumento per tipo: ", size=20),
             ft.Row(spacing=200,
-                   #...
+                   controls=[self.input_tipo_strumento, pulsante_tipo],
+                   alignment=ft.MainAxisAlignment.START,
                    ),
+            self.lista_strumenti_ricerca,
             ft.Divider()
 
         )
