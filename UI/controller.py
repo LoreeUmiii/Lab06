@@ -29,3 +29,13 @@ class Controller:
 
     # Altre Funzioni Event Handler
     # TODO
+
+    def mostra(self):
+        risultato = self._model.get_strumenti()
+        for strumento in risultato:
+            stato = "✅" if strumento.disponibile else "⛔"
+            stringa = f"{strumento}: {stato}"
+            self._view.lista_strumenti.controls.append(ft.Text(stringa))
+            self._view.update()
+
+

@@ -64,6 +64,8 @@ class View:
 
         # Altri Pulsanti da implementare (es. "Mostra" e "Cerca")
         # TODO
+        testo_strumenti = ft.Text("Strumenti", size=20,)
+        pulsante_mostra = ft.Button("Mostra", on_click=self.controller.mostra)
 
         # --- LAYOUT ---
         self.page.add(
@@ -82,10 +84,22 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            # TODO
+            # Completato
+            ft.Row(spacing=200,
+                   controls=[testo_strumenti, pulsante_mostra,],
+                   alignment=ft.MainAxisAlignment.START),
+            self.lista_strumenti,
+            ft.Divider(),
+
 
             # Sezione 4
             # TODO
+            ft.Text("Cerca strumento per tipo: ", size=20),
+            ft.Row(spacing=200,
+                   #...
+                   ),
+            ft.Divider()
+
         )
 
     def cambia_tema(self, e):

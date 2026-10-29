@@ -48,15 +48,14 @@ class DepositoStrumenti:
         try:
             cursor.execute(query)
             for row in cursor:
-                strumento = Strumento(row["id"], row["tipo"], row["marca"],
+                strumento = Strumento(row["codice"], row["tipo"], row["marca"],
                                       row["anno_acquisto"], row["valore"], row["disponibile"] )
                 result.append(strumento)
+            cursor.close()
 
         except Exception as e:
             print(f"Errore nell'esecuzione della query: {e} ")
-        finally:
-            cursor.close()
-            cnx.close()
+        cnx.close()
 
         return result
 
@@ -66,4 +65,25 @@ class DepositoStrumenti:
             :param tipo: il tipo dello strumento (es. "Chitarra")
             :return: una lista con tutti gli strumenti del tipo indicato oppure None
         """
-        # TODO
+        # Connessione al DB + Controllo
+        cnx = get_connection()
+        result = []
+        if cnx is None:
+            return result
+        # Cursore + query
+        cursor = cnx.cursor(dictionary=True)
+        query = "SELECT * FROM strumento WHERE tipo LIKE %s"
+
+        try:
+            cursor.execute(query, f"{tipo}")
+            for row in cursor:
+                strumento = Strumento( row["codice"], row["tipo"], row["marca"],
+                                       row["anno_acquisto"], row["valore"], row["disponibile"] )
+                result.append(strumento)
+            cursor.close()
+        except Exception as e:
+            print(f"Errore nell'esecuzione della query: {e}")
+
+        cnx.close()
+
+        return result
